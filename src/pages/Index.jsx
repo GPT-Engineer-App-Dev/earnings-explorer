@@ -1,18 +1,82 @@
-// Update this page (the content is just a fallback if you fail and example)
-// Use chakra-ui
-import { Container, Text, VStack } from "@chakra-ui/react";
-
-// Example of using react-icons
-// import { FaRocket } from "react-icons/fa";
-// <IconButton aria-label="Add" icon={<FaRocket />} size="lg" />; // IconButton would also have to be imported from chakra
+import { Box, Container, Flex, Heading, HStack, Image, Link, Stack, Text, VStack } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
 const Index = () => {
   return (
-    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-      <VStack spacing={4}>
-        <Text fontSize="2xl">Your Blank Canvas</Text>
-        <Text>Chat with the agent to start making edits.</Text>
-      </VStack>
+    <Container maxW="container.xl" p={0}>
+      {/* Navigation Bar */}
+      <Box bg="gray.800" color="white" py={4}>
+        <Flex justify="space-between" align="center" maxW="container.xl" mx="auto" px={4}>
+          <Heading as="h1" size="lg">
+            Financial Times
+          </Heading>
+          <HStack spacing={8}>
+            <Link as={RouterLink} to="/" _hover={{ textDecoration: "none", color: "gray.400" }}>
+              Home
+            </Link>
+            <Link as={RouterLink} to="/markets" _hover={{ textDecoration: "none", color: "gray.400" }}>
+              Markets
+            </Link>
+            <Link as={RouterLink} to="/world" _hover={{ textDecoration: "none", color: "gray.400" }}>
+              World
+            </Link>
+            <Link as={RouterLink} to="/opinion" _hover={{ textDecoration: "none", color: "gray.400" }}>
+              Opinion
+            </Link>
+          </HStack>
+        </Flex>
+      </Box>
+
+      {/* Main Content */}
+      <Flex direction={{ base: "column", md: "row" }} mt={8} px={4}>
+        {/* Top News Section */}
+        <Box flex="3" mr={{ md: 4 }}>
+          <Heading as="h2" size="xl" mb={4}>
+            Top News
+          </Heading>
+          <VStack spacing={8} align="stretch">
+            <Box>
+              <Image src="/images/news1.jpg" alt="News 1" borderRadius="md" />
+              <Heading as="h3" size="md" mt={2}>
+                Headline for Top News Article 1
+              </Heading>
+              <Text mt={2}>
+                Brief description or summary of the top news article. This should give readers an idea of what the article is about.
+              </Text>
+            </Box>
+            <Box>
+              <Image src="/images/news2.jpg" alt="News 2" borderRadius="md" />
+              <Heading as="h3" size="md" mt={2}>
+                Headline for Top News Article 2
+              </Heading>
+              <Text mt={2}>
+                Brief description or summary of the top news article. This should give readers an idea of what the article is about.
+              </Text>
+            </Box>
+          </VStack>
+        </Box>
+
+        {/* Sidebar */}
+        <Box flex="1" mt={{ base: 8, md: 0 }}>
+          <Heading as="h2" size="lg" mb={4}>
+            Market Data
+          </Heading>
+          <Box bg="gray.100" p={4} borderRadius="md" mb={8}>
+            <Text>Market data and financial information will be displayed here.</Text>
+          </Box>
+          <Heading as="h2" size="lg" mb={4}>
+            Trending Topics
+          </Heading>
+          <VStack spacing={4} align="stretch">
+            <Box bg="gray.100" p={4} borderRadius="md">
+              <Text>Trending Topic 1</Text>
+            </Box>
+            <Box bg="gray.100" p={4} borderRadius="md">
+              <Text>Trending Topic 2</Text>
+            </Box>
+          </VStack>
+        </Box>
+      </Flex>
     </Container>
   );
 };
